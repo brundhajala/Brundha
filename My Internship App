@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Web Project</title>
+
+<style>
+
+/* GENERAL */
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f4f6f9;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#2c7be5;
+color:white;
+padding:15px 30px;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* PAGE SECTIONS */
+
+.page{
+display:none;
+padding:30px;
+}
+
+#home{
+display:block;
+}
+
+/* HOME HERO SECTION */
+
+.hero{
+background:linear-gradient(to right,#2c7be5,#6fa8ff);
+color:white;
+padding:60px 30px;
+text-align:center;
+border-radius:10px;
+}
+
+.hero img{
+width:350px;
+margin-top:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hero button{
+margin-top:20px;
+padding:12px 25px;
+font-size:16px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.hero button:hover{
+background:#218838;
+}
+
+/* FORM */
+
+form{
+background:white;
+padding:20px;
+border-radius:8px;
+max-width:400px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#218838;
+}
+
+/* TODO LIST */
+
+.todo{
+background:white;
+padding:20px;
+border-radius:8px;
+max-width:400px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+li{
+margin:8px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+}
+
+.hero img{
+width:90%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h2>My Internship App</h2>
+
+<ul>
+<li><a onclick="showPage('home')">Home</a></li>
+<li><a onclick="showPage('form')">Form</a></li>
+<li><a onclick="showPage('todo')">To-Do</a></li>
+</ul>
+
+</nav>
+
+
+<!-- HOME PAGE -->
+
+<div id="home" class="page">
+
+<div class="hero">
+
+<h1>Welcome to My Internship Web Project</h1>
+
+<p>This project demonstrates HTML, CSS, JavaScript, Flexbox, and Responsive Web Design.</p>
+
+<button onclick="welcomeAlert()">Explore Project</button>
+
+<br>
+
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+
+</div>
+
+</div>
+
+
+<!-- FORM PAGE -->
+
+<div id="form" class="page">
+
+<h2>Contact Form</h2>
+
+<form id="myForm">
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<input type="email" id="email" placeholder="Enter your email">
+
+<button type="submit">Submit</button>
+
+</form>
+
+<p id="message"></p>
+
+</div>
+
+
+<!-- TODO PAGE -->
+
+<div id="todo" class="page">
+
+<div class="todo">
+
+<h2>To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter a task">
+
+<button onclick="addTask()">Add Task</button>
+
+<ul id="taskList"></ul>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* PAGE SWITCH */
+
+function showPage(page){
+
+let pages=document.querySelectorAll(".page");
+
+pages.forEach(p=>p.style.display="none");
+
+document.getElementById(page).style.display="block";
+
+}
+
+
+/* HOME BUTTON ALERT */
+
+function welcomeAlert(){
+
+alert("Welcome! Explore the Form and To-Do sections of this Internship Project.");
+
+}
+
+
+/* FORM VALIDATION */
+
+document.getElementById("myForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let message=document.getElementById("message");
+
+if(name=="" || email==""){
+message.innerHTML="Please fill all fields";
+message.style.color="red";
+return;
+}
+
+let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if(!email.match(emailPattern)){
+message.innerHTML="Enter valid email";
+message.style.color="red";
+return;
+}
+
+message.innerHTML="Form submitted successfully!";
+message.style.color="green";
+
+});
+
+
+/* TODO LIST */
+
+function addTask(){
+
+let task=document.getElementById("taskInput").value;
+
+if(task==="") return;
+
+let li=document.createElement("li");
+
+li.innerHTML=task + " <button onclick='removeTask(this)'>Delete</button>";
+
+document.getElementById("taskList").appendChild(li);
+
+document.getElementById("taskInput").value="";
+
+}
+
+function removeTask(button){
+
+button.parentElement.remove();
+
+}
+
+</script>
+
+</body>
+</html>
