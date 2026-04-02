@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Smart Web Project App</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6fb;
+}
+
+/* NAVBAR */
+
+nav{
+background:#4a6cf7;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* PAGES */
+
+.page{
+display:none;
+padding:30px;
+}
+
+.active{
+display:block;
+}
+
+/* CARDS */
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+margin-top:20px;
+}
+
+/* BUTTON */
+
+button{
+padding:10px 20px;
+background:#4a6cf7;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* IMAGE */
+
+img{
+width:100%;
+border-radius:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+nav a{
+display:block;
+margin:10px 0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('quiz')">Quiz</a>
+<a onclick="showPage('carousel')">Image Carousel</a>
+<a onclick="showPage('api')">API Data</a>
+
+</nav>
+
+<!-- HOME PAGE -->
+
+<div id="home" class="page active">
+
+<h1>Smart Web Project App</h1>
+
+<div class="card">
+
+<h2>Welcome</h2>
+
+<p>
+This project demonstrates responsive design, interactive quiz,
+image carousel and API data fetching using JavaScript.
+</p>
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+
+<p>
+Click the navigation menu to explore each feature.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUIZ PAGE -->
+
+<div id="quiz" class="page">
+
+<h2>Interactive Quiz</h2>
+
+<div class="card">
+
+<p>What does CSS stand for?</p>
+
+<label><input type="radio" name="q" value="1"> Cascading Style Sheets</label><br>
+<label><input type="radio" name="q" value="2"> Computer Style Sheets</label><br>
+<label><input type="radio" name="q" value="3"> Creative Style System</label><br><br>
+
+<button onclick="checkAnswer()">Submit</button>
+
+<p id="result"></p>
+
+</div>
+
+</div>
+
+<!-- CAROUSEL PAGE -->
+
+<div id="carousel" class="page">
+
+<h2>Image Carousel</h2>
+
+<div class="card">
+
+<img id="slider" src="https://images.unsplash.com/photo-1508780709619-79562169bc64">
+
+<br><br>
+
+<button onclick="prevImage()">Previous</button>
+<button onclick="nextImage()">Next</button>
+
+</div>
+
+</div>
+
+<!-- API PAGE -->
+
+<div id="api" class="page">
+
+<h2>Fetch API Data</h2>
+
+<div class="card">
+
+<p>Click the button to get a random joke.</p>
+
+<button onclick="getJoke()">Get Joke</button>
+
+<p id="joke"></p>
+
+</div>
+
+</div>
+
+<script>
+
+/* PAGE SWITCHING */
+
+function showPage(pageId){
+
+let pages=document.querySelectorAll(".page");
+
+pages.forEach(function(page){
+page.classList.remove("active");
+});
+
+document.getElementById(pageId).classList.add("active");
+
+}
+
+/* QUIZ */
+
+function checkAnswer(){
+
+let options=document.getElementsByName("q");
+
+let answer="";
+
+for(let i=0;i<options.length;i++){
+
+if(options[i].checked){
+answer=options[i].value;
+}
+
+}
+
+if(answer=="1"){
+document.getElementById("result").innerHTML="Correct Answer!";
+}
+else{
+document.getElementById("result").innerHTML="Wrong Answer!";
+}
+
+}
+
+/* CAROUSEL */
+
+let images=[
+"https://images.unsplash.com/photo-1508780709619-79562169bc64",
+"https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+"https://images.unsplash.com/photo-1504639725590-34d0984388bd"
+];
+
+let index=0;
+
+function nextImage(){
+
+index++;
+
+if(index>=images.length){
+index=0;
+}
+
+document.getElementById("slider").src=images[index];
+
+}
+
+function prevImage(){
+
+index--;
+
+if(index<0){
+index=images.length-1;
+}
+
+document.getElementById("slider").src=images[index];
+
+}
+
+/* API FETCH */
+
+function getJoke(){
+
+fetch("https://official-joke-api.appspot.com/random_joke")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+document.getElementById("joke").innerHTML=
+data.setup + "<br><b>" + data.punchline + "</b>";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
