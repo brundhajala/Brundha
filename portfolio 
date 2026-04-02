@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<title>Portfolio - Brundha</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6ff;
+}
+
+/* NAVBAR */
+
+nav{
+background:#4a6cf7;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* MAIN CARD */
+
+#outer_box{
+max-width:900px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+margin-top:20px;
+}
+
+/* PAGES */
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+h2{
+color:#4a6cf7;
+}
+
+/* DETAILS */
+
+#details ul{
+list-style:none;
+padding:0;
+}
+
+#details li{
+margin:6px 0;
+}
+
+/* PROJECT GRID */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.project{
+background:#f7f9ff;
+padding:15px;
+border-radius:8px;
+}
+
+/* TODO */
+
+#todo input{
+padding:8px;
+}
+
+#todo button{
+padding:8px 12px;
+background:#4a6cf7;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.product{
+background:#f7f9ff;
+padding:15px;
+border-radius:8px;
+}
+
+/* CONTACT */
+
+form input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+/* SOCIAL */
+
+#links i{
+font-size:32px;
+margin-right:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+nav a{
+display:block;
+margin:10px 0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('aboutPage')">About</a>
+<a onclick="showPage('projects')">Projects</a>
+<a onclick="showPage('todo')">To-Do</a>
+<a onclick="showPage('products')">Products</a>
+<a onclick="showPage('contact')">Contact</a>
+
+</nav>
+
+<div id="outer_box">
+
+<!-- HOME PAGE -->
+
+<section id="home" class="page active">
+
+<h2>Portfolio Details</h2>
+
+<div id="details">
+<ul>
+<li><b>Name:</b> Brundha</li>
+<li><b>Roll No:</b> XXXXX</li>
+<li><b>Email:</b> yourmail@gmail.com</li>
+</ul>
+</div>
+
+<section>
+
+<h2>About Me</h2>
+
+<p>
+I am looking forward to developing new skills and growing knowledge by gaining practical experience.
+A highly motivated and detail-oriented undergraduate student pursuing a B.Tech in Computer Science
+and Engineering with strong analytical and problem-solving skills.
+
+Passionate about leveraging academic knowledge and practical skills to contribute to dynamic
+projects and fast-paced work environments. Demonstrated ability to adapt quickly, work
+collaboratively, and meet deadlines consistently.
+</p>
+
+</section>
+
+<section>
+
+<h2>Skills</h2>
+
+<ol>
+<li>Front-end Languages: HTML, CSS, JavaScript</li>
+<li>Back-end Languages: C, Python, Java</li>
+<li>Tools: VS Code, Tableau</li>
+<li>Frameworks: Node.js</li>
+<li>Databases: MySQL, MongoDB</li>
+</ol>
+
+</section>
+
+<div id="links">
+
+<a href="https://www.linkedin.com/in/brundha-jala-27157a307">
+<i class='bx bxl-linkedin-square'></i>
+</a>
+
+<a href="https://github.com/brundhajala">
+<i class='bx bxl-github'></i>
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT PAGE -->
+
+<section id="aboutPage" class="page">
+
+<h2>About Me</h2>
+
+<p>
+I am a Computer Science student passionate about technology and innovation.
+I enjoy developing web applications and learning modern programming tools.
+</p>
+
+</section>
+
+
+<!-- PROJECT PAGE -->
+
+<section id="projects" class="page">
+
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+<h3>Smart Web Project app</h3>
+<p>The Smart Web Project App is a modern web application designed to demonstrate interactive and responsive web development.</p>
+</div>
+
+<div class="project">
+<h3>Weather App</h3>
+<p>Displays real-time weather using API integration.</p>
+</div>
+
+<div class="project">
+<h3>Smart Agriculture Monitoring System</h3>
+<p>The Smart Agriculture Monitoring System is an IoT-based project designed to help farmers monitor crop and soil conditions using modern technology.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TODO PAGE -->
+
+<section id="todo" class="page">
+
+<h2>To-Do List</h2>
+
+<input id="taskInput" placeholder="Enter task">
+
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+</section>
+
+
+<!-- PRODUCTS PAGE -->
+
+<section id="products" class="page">
+
+<h2>Product Listing</h2>
+
+<select onchange="filterProducts(this.value)">
+<option value="all">All</option>
+<option value="tech">Tech</option>
+<option value="book">Book</option>
+</select>
+
+<select onchange="sortProducts(this.value)">
+<option value="rating">Rating</option>
+<option value="price">Price</option>
+</select>
+
+<div class="products" id="productList"></div>
+
+</section>
+
+
+<!-- CONTACT PAGE -->
+
+<section id="contact" class="page">
+
+<h2>Contact</h2>
+
+<form>
+
+<input type="text" placeholder="Name" required>
+
+<input type="email" placeholder="Email" required>
+
+<textarea placeholder="Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* PAGE SWITCH */
+
+function showPage(page){
+
+let pages=document.querySelectorAll(".page");
+
+pages.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(page).classList.add("active");
+
+}
+
+
+/* TODO LIST */
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function renderTasks(){
+
+let list=document.getElementById("taskList");
+
+list.innerHTML="";
+
+tasks.forEach((task,index)=>{
+
+let li=document.createElement("li");
+
+li.textContent=task;
+
+let btn=document.createElement("button");
+
+btn.textContent="Delete";
+
+btn.onclick=()=>{
+
+tasks.splice(index,1);
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+
+renderTasks();
+
+};
+
+li.appendChild(btn);
+
+list.appendChild(li);
+
+});
+
+}
+
+function addTask(){
+
+let input=document.getElementById("taskInput");
+
+if(input.value==="") return;
+
+tasks.push(input.value);
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+
+input.value="";
+
+renderTasks();
+
+}
+
+renderTasks();
+
+
+/* PRODUCTS */
+
+let products=[
+
+{name:"Laptop",category:"tech",price:800,rating:4.5},
+{name:"Phone",category:"tech",price:600,rating:4.2},
+{name:"JavaScript Book",category:"book",price:30,rating:4.8},
+{name:"HTML Book",category:"book",price:20,rating:4.4}
+
+];
+
+function displayProducts(list){
+
+let container=document.getElementById("productList");
+
+container.innerHTML="";
+
+list.forEach(p=>{
+
+container.innerHTML+=`
+
+<div class="product">
+
+<h4>${p.name}</h4>
+
+<p>Price: $${p.price}</p>
+
+<p>Rating: ${p.rating}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+function filterProducts(cat){
+
+if(cat=="all") displayProducts(products);
+
+else displayProducts(products.filter(p=>p.category==cat));
+
+}
+
+function sortProducts(type){
+
+let sorted=[...products];
+
+if(type=="price") sorted.sort((a,b)=>a.price-b.price);
+else sorted.sort((a,b)=>b.rating-a.rating);
+
+displayProducts(sorted);
+
+}
+
+displayProducts(products);
+
+</script>
+
+</body>
+</html>
