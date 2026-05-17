@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Image Gallery</title>
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f4f7ff;
+color:#222;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(135deg,#4a6cf7,#6c63ff);
+color:white;
+padding:50px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:18px;
+opacity:0.9;
+}
+
+/* GALLERY SECTION */
+
+.gallery-container{
+max-width:1200px;
+margin:50px auto;
+padding:0 20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+/* IMAGE CARD */
+
+.gallery-item{
+overflow:hidden;
+border-radius:16px;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.gallery-item:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.gallery-item img{
+width:100%;
+height:250px;
+object-fit:cover;
+display:block;
+transition:0.4s;
+}
+
+.gallery-item:hover img{
+transform:scale(1.08);
+}
+
+/* IMAGE INFO */
+
+.image-info{
+padding:18px;
+}
+
+.image-info h3{
+margin-bottom:8px;
+color:#4a6cf7;
+}
+
+.image-info p{
+font-size:14px;
+color:#555;
+line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+/* TABLET VIEW */
+
+@media(max-width:992px){
+
+.gallery-container{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* MOBILE VIEW */
+
+@media(max-width:600px){
+
+header h1{
+font-size:32px;
+}
+
+.gallery-container{
+grid-template-columns:1fr;
+}
+
+.gallery-item img{
+height:220px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<h1>Responsive Image Gallery</h1>
+
+<p>
+A modern image gallery built using HTML5 and CSS Grid with responsive layouts.
+</p>
+
+</header>
+
+<!-- GALLERY -->
+
+<section class="gallery-container">
+
+<!-- IMAGE 1 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Nature">
+
+<div class="image-info">
+
+<h3>Nature View</h3>
+
+<p>
+Beautiful natural landscapes with mountains, forests, and rivers captured in high quality.
+</p>
+
+</div>
+
+</div>
+
+<!-- IMAGE 2 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1494526585095-c41746248156" alt="City">
+
+<div class="image-info">
+
+<h3>Modern City</h3>
+
+<p>
+Urban city architecture showcasing modern buildings and vibrant city life.
+</p>
+
+</div>
+
+</div>
+
+<!-- IMAGE 3 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" alt="Technology">
+
+<div class="image-info">
+
+<h3>Technology</h3>
+
+<p>
+Modern technology workspace with coding, laptops, and development environments.
+</p>
+
+</div>
+
+</div>
+
+<!-- IMAGE 4 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Travel">
+
+<div class="image-info">
+
+<h3>Travel Destination</h3>
+
+<p>
+Amazing travel destinations and scenic views from around the world.
+</p>
+
+</div>
+
+</div>
+
+<!-- IMAGE 5 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Workspace">
+
+<div class="image-info">
+
+<h3>Creative Workspace</h3>
+
+<p>
+Professional workspace setup designed for productivity and creativity.
+</p>
+
+</div>
+
+</div>
+
+<!-- IMAGE 6 -->
+
+<div class="gallery-item">
+
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+
+<div class="image-info">
+
+<h3>Beach View</h3>
+
+<p>
+Relaxing beach scenery with ocean waves and beautiful sunset landscapes.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Responsive Image Gallery | Designed by Brundha
+</p>
+
+</footer>
+
+</body>
+</html>
