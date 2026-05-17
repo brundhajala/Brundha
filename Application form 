@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Job Application Form</title>
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#4a6cf7,#6c63ff);
+padding:20px;
+}
+
+/* FORM CONTAINER */
+
+.container{
+width:100%;
+max-width:500px;
+background:white;
+padding:35px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.container h2{
+text-align:center;
+margin-bottom:25px;
+color:#4a6cf7;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+margin-bottom:20px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#333;
+}
+
+.input-box{
+display:flex;
+align-items:center;
+border:1px solid #ccc;
+border-radius:8px;
+padding:12px;
+transition:0.3s;
+}
+
+.input-box:focus-within{
+border-color:#4a6cf7;
+box-shadow:0 0 5px rgba(74,108,247,0.4);
+}
+
+.input-box i{
+font-size:20px;
+color:#777;
+margin-right:10px;
+}
+
+.input-box input,
+.input-box textarea{
+width:100%;
+border:none;
+outline:none;
+font-size:15px;
+resize:none;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:14px;
+border:none;
+background:#4a6cf7;
+color:white;
+font-size:16px;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#3557e0;
+}
+
+/* ERROR MESSAGE */
+
+.error{
+color:red;
+font-size:14px;
+margin-top:5px;
+display:none;
+}
+
+/* SUCCESS MESSAGE */
+
+.success{
+text-align:center;
+margin-top:20px;
+color:green;
+font-weight:bold;
+display:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+.container{
+padding:25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Job Application Form</h2>
+
+<form id="myForm">
+
+<!-- NAME -->
+
+<div class="input-group">
+
+<label>Full Name</label>
+
+<div class="input-box">
+
+<i class='bx bx-user'></i>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+</div>
+
+<div class="error" id="nameError">
+Please enter your name
+</div>
+
+</div>
+
+<!-- EMAIL -->
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<div class="input-box">
+
+<i class='bx bx-envelope'></i>
+
+<input type="text" id="email" placeholder="Enter your email">
+
+</div>
+
+<div class="error" id="emailError">
+Please enter a valid email address
+</div>
+
+</div>
+
+<!-- PHONE -->
+
+<div class="input-group">
+
+<label>Phone Number</label>
+
+<div class="input-box">
+
+<i class='bx bx-phone'></i>
+
+<input type="text" id="phone" placeholder="Enter your phone number">
+
+</div>
+
+<div class="error" id="phoneError">
+Please enter a valid 10-digit phone number
+</div>
+
+</div>
+
+<!-- MESSAGE -->
+
+<div class="input-group">
+
+<label>Message</label>
+
+<div class="input-box">
+
+<i class='bx bx-message-detail'></i>
+
+<textarea id="message" rows="4" placeholder="Enter your message"></textarea>
+
+</div>
+
+<div class="error" id="messageError">
+Message field cannot be empty
+</div>
+
+</div>
+
+<!-- BUTTON -->
+
+<button type="submit">Submit Application</button>
+
+<div class="success" id="successMessage">
+Form submitted successfully!
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+/* FORM VALIDATION */
+
+document.getElementById("myForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let isValid = true;
+
+/* GET VALUES */
+
+let name = document.getElementById("name").value.trim();
+
+let email = document.getElementById("email").value.trim();
+
+let phone = document.getElementById("phone").value.trim();
+
+let message = document.getElementById("message").value.trim();
+
+/* EMAIL PATTERN */
+
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+/* PHONE PATTERN */
+
+let phonePattern = /^[0-9]{10}$/;
+
+/* NAME VALIDATION */
+
+if(name === ""){
+
+document.getElementById("nameError").style.display = "block";
+
+isValid = false;
+
+}else{
+
+document.getElementById("nameError").style.display = "none";
+
+}
+
+/* EMAIL VALIDATION */
+
+if(!email.match(emailPattern)){
+
+document.getElementById("emailError").style.display = "block";
+
+isValid = false;
+
+}else{
+
+document.getElementById("emailError").style.display = "none";
+
+}
+
+/* PHONE VALIDATION */
+
+if(!phone.match(phonePattern)){
+
+document.getElementById("phoneError").style.display = "block";
+
+isValid = false;
+
+}else{
+
+document.getElementById("phoneError").style.display = "none";
+
+}
+
+/* MESSAGE VALIDATION */
+
+if(message === ""){
+
+document.getElementById("messageError").style.display = "block";
+
+isValid = false;
+
+}else{
+
+document.getElementById("messageError").style.display = "none";
+
+}
+
+/* SUCCESS */
+
+if(isValid){
+
+document.getElementById("successMessage").style.display = "block";
+
+document.getElementById("myForm").reset();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
