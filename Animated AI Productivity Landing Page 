@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Animated AI Productivity Landing Page</title>
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial, sans-serif;
+background:#f5f7ff;
+color:#222;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(135deg,#4a6cf7,#6c63ff);
+padding:20px 8%;
+color:white;
+animation:fadeIn 1.5s ease;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+animation:slideLeft 1.2s ease;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffd700;
+transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+padding:80px 8%;
+flex-wrap:wrap;
+}
+
+.hero-text{
+flex:1;
+min-width:280px;
+animation:slideLeft 1.5s ease;
+}
+
+.hero-text h1{
+font-size:55px;
+margin-bottom:20px;
+color:#4a6cf7;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:1.7;
+margin-bottom:25px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:14px 30px;
+background:#4a6cf7;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:0.4s;
+}
+
+.hero-btn:hover{
+background:#3557e0;
+transform:scale(1.08);
+}
+
+.hero-image{
+flex:1;
+text-align:center;
+animation:slideRight 1.5s ease;
+}
+
+.hero-image img{
+width:100%;
+max-width:420px;
+animation:float 3s ease-in-out infinite;
+}
+
+/* FEATURES */
+
+.features{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+animation:fadeInUp 1.5s ease;
+}
+
+.section-title h2{
+font-size:40px;
+color:#4a6cf7;
+margin-bottom:10px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature-card{
+background:white;
+padding:30px;
+border-radius:16px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.4s;
+animation:fadeInUp 1.5s ease;
+}
+
+.feature-card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.feature-card i{
+font-size:55px;
+color:#4a6cf7;
+margin-bottom:20px;
+transition:0.4s;
+}
+
+.feature-card:hover i{
+transform:rotate(10deg) scale(1.2);
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:80px 8%;
+background:#eef2ff;
+}
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.testimonial{
+background:white;
+padding:25px;
+border-radius:14px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.4s;
+animation:fadeInUp 1.5s ease;
+}
+
+.testimonial:hover{
+transform:translateY(-10px);
+}
+
+.testimonial p{
+font-style:italic;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.testimonial h4{
+color:#4a6cf7;
+}
+
+/* CTA */
+
+.cta{
+padding:80px 8%;
+text-align:center;
+background:linear-gradient(135deg,#4a6cf7,#6c63ff);
+color:white;
+animation:fadeIn 2s ease;
+}
+
+.cta h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.cta p{
+font-size:18px;
+margin-bottom:25px;
+}
+
+.cta a{
+display:inline-block;
+padding:14px 30px;
+background:white;
+color:#4a6cf7;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+transition:0.4s;
+}
+
+.cta a:hover{
+transform:scale(1.08);
+}
+
+/* FOOTER */
+
+footer{
+background:#111827;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+.social-icons a{
+color:white;
+font-size:32px;
+margin:0 10px;
+transition:0.4s;
+}
+
+.social-icons a:hover{
+color:#6c63ff;
+transform:translateY(-5px);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slideLeft{
+from{
+transform:translateX(-80px);
+opacity:0;
+}
+to{
+transform:translateX(0);
+opacity:1;
+}
+}
+
+@keyframes slideRight{
+from{
+transform:translateX(80px);
+opacity:0;
+}
+to{
+transform:translateX(0);
+opacity:1;
+}
+}
+
+@keyframes fadeInUp{
+from{
+transform:translateY(50px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero{
+text-align:center;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.navbar{
+flex-direction:column;
+gap:15px;
+}
+
+nav a{
+margin:0 10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">AI Productivity App</div>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">Features</a>
+<a href="#">Testimonials</a>
+<a href="#">Contact</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Boost Productivity With Smart AI Solutions</h1>
+
+<p>
+AI Productivity App helps students, developers, and startups automate tasks,
+manage projects efficiently, and improve workflow using advanced AI tools.
+</p>
+
+<a href="#" class="hero-btn">Get Started</a>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI">
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="section-title">
+
+<h2>Powerful Features</h2>
+
+<p>
+Everything you need to work smarter and faster.
+</p>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class='bx bx-brain'></i>
+
+<h3>AI Automation</h3>
+
+<p>
+Automate repetitive tasks using intelligent AI workflows.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class='bx bx-devices'></i>
+
+<h3>Responsive Platform</h3>
+
+<p>
+Access your dashboard on desktop, tablet, and mobile devices.
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class='bx bx-line-chart'></i>
+
+<h3>Analytics Dashboard</h3>
+
+<p>
+Track performance and productivity with smart analytics tools.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<div class="section-title">
+
+<h2>User Testimonials</h2>
+
+<p>
+What users say about our platform.
+</p>
+
+</div>
+
+<div class="testimonial-grid">
+
+<div class="testimonial">
+
+<p>
+“AI Productivity App improved our workflow and team productivity significantly.”
+</p>
+
+<h4>- Rahul Sharma</h4>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+“The animations and responsive UI make the experience smooth and professional.”
+</p>
+
+<h4>- Sneha Reddy</h4>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+“One of the best AI productivity platforms with modern design and features.”
+</p>
+
+<h4>- Arjun Patel</h4>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Start Your Productivity Journey Today</h2>
+
+<p>
+Join thousands of users using AI-powered productivity solutions.
+</p>
+
+<a href="#">Join Now</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>AI Productivity App</h3>
+
+<p>
+Smart AI Solutions for Better Productivity
+</p>
+
+<br>
+
+<div class="social-icons">
+
+<a href="#"><i class='bx bxl-linkedin-square'></i></a>
+
+<a href="#"><i class='bx bxl-github'></i></a>
+
+<a href="#"><i class='bx bxl-instagram'></i></a>
+
+</div>
+
+<br>
+
+<p>
+© 2026 AI Productivity App. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
